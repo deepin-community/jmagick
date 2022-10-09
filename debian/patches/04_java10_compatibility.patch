@@ -1,0 +1,41 @@
+Description: Fixes the build failure with Java 10
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: no
+--- a/configure.in
++++ b/configure.in
+@@ -211,13 +211,6 @@
+ fi
+ AC_SUBST(JAVAC)
+ 
+-dnl Determine if we have the Java header file generator
+-AC_PATH_PROG(JAVAH, javah, not_found)
+-if test ${JAVAH} = not_found; then
+-	AC_MSG_ERROR('No Java header generator (javah) found')
+-fi
+-AC_SUBST(JAVAH)
+-
+ dnl Determine if we have jar
+ AC_PATH_PROG(JAR, jar, not_found)
+ if test ${JAR} = not_found; then
+--- a/Make.rules
++++ b/Make.rules
+@@ -71,6 +71,7 @@
+ $(JAVA_PACKAGE_DIR)/%.class: %.java
+ 	@-mkdir -p $(dir $@)
+ 	$(JAVAC) $(JFLAGS) -d $(JAVA_CLASSES_DIR) 	\
++		-h $(PACKAGE_GENERATED_DIR)		\
+ 		-sourcepath $(JAVA_SRC_DIR)		\
+ 		-classpath $(JAVA_CLASS_PATH) $<
+ 
+@@ -120,11 +121,6 @@
+ # Rule to make header files from java class files.
+ # The originating java source must contain native method specifications.
+ $(PACKAGE_GENERATED_DIR)/$(JNI_HEADER_PREFIX)_%.h: $(JAVA_PACKAGE_DIR)/%.class
+-	@-rm $@ > /dev/null 2>&1
+-	@-mkdir -p $(dir $@)
+-	"$(JAVAH)" -d $(PACKAGE_GENERATED_DIR) -jni			\
+-		-classpath $(JAVA_CLASS_PATH)				\
+-		$(JAVA_PACKAGE).$(subst .class,,$(notdir $<))
+ 
+ # Rule to compile JNI C files
+ $(PACKAGE_OBJ_DIR)/%.lo: %.c $(PACKAGE_GENERATED_DIR)/%.h

@@ -1,0 +1,6 @@
+version=3
+#opts=dversionmangle=s/~\d+-svn\d+// \
+opts="dversionmangle=s/\~20130201-svn99/!/" \
+#http://downloads.jmagick.org/ ([\d\.]*)/ debian debian/orig-tar.sh
+#http://downloads.jmagick.org/([\d\.]*)/ jmagick-([\d\.]*)-src\.tar\.gz debian debian/orig-tar.sh
+http://svn.code.sf.net/p/jmagick/code/branches/(\d[\d\.]*).* debian debian/orig-tar.sh

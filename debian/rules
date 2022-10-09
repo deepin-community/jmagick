@@ -1,0 +1,43 @@
+#!/usr/bin/make -f
+
+JAVA_HOME	:= /usr/lib/jvm/default-java
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/class/makefile.mk
+
+CC=gcc
+DEB_CONFIGURE_SCRIPT_ENV += PATH=$(JAVA_HOME)/bin:$$PATH
+DEB_CONFIGURE_EXTRA_FLAGS = --libdir=/usr/lib/jni --with-java-home=$(JAVA_HOME)
+DEB_MAKE_CLEAN_TARGET   = clean
+DEB_MAKE_BUILD_TARGET   = all
+DEB_MAKE_INSTALL_TARGET = install DESTDIR=$(DEB_DESTDIR)
+DEB_MAKE_CHECK_TARGET   =
+DEB_DH_INSTALL_SOURCEDIR = debian/tmp
+DEB_COMPRESS_EXCLUDE = .java
+DEB_INSTALL_CHANGELOGS_ALL := Changelog.txt
+DEB_AUTO_UPDATE_AUTOCONF := yes
+VERSION=$(shell dpkg-parsechangelog | sed -rne 's,^Version: ([^~-]+).*,\1,p')
+
+export JFLAGS = --release 7 -g
+
+install/libjmagick6-java::
+	mh_install
+
+install/libjmagick6-jni::
+	chrpath -d ./lib/libJMagick.so
+	install -m 644 -D ./lib/libJMagick.so ./debian/libjmagick6-jni/usr/lib/jni/libJMagick.so
+
+install/jmagick6-docs::
+	mkdir -p ./debian/jmagick6-docs/usr/share/doc/jmagick6-docs/api
+	$(MAKE) javadoc DESTDIR=./debian/jmagick6-docs JAVADOC_DIR=./debian/jmagick6-docs/usr/share/doc/jmagick6-docs/api
+
+clean::
+	if [ -e Make.def ]; then rm -rf Make.def libtool config.cache config.log config.status obj/magick/.libs; rm -rf autom4te.cache; rm -rf lib/*.jar; mh_clean; fi
+#	rm -rf Make.def libtool config.cache config.log config.status obj/magick/.libs
+#	rm -rf autom4te.cache
+#	rm -rf lib/*.jar
+#	mh_clean
+
+get-orig-pom:
+	wget http://central.maven.org/maven2/jmagick/jmagick/$(VERSION)/jmagick-$(VERSION).pom -O debian/pom.xml

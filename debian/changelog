@@ -1,0 +1,194 @@
+jmagick (6.6.9~20130201~svn99-4) UNRELEASED; urgency=medium
+
+  * update
+
+ -- Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>  Fri, 27 May 2022 15:33:09 +0800
+
+jmagick (6.6.9~20130201~svn99-4) unstable; urgency=medium
+
+  * update version
+
+ -- wangxiangyu <wangxiangyu@uniontech.com>  Fri, 27 May 2022 15:31:43 +0200
+
+jmagick (6.6.9~20130201-svn99-4) unstable; urgency=medium
+
+  * Team upload.
+
+  [ tony mancill ]
+  * Apply patch for missing getByteArrayFieldValue prototype.
+    - Thanks to Adam Conrad for the patch. (Closes: #727776)
+
+  [ Emmanuel Bourg ]
+  * Fixed the build failure with Java 10 (Closes: #897456)
+  * Standards-Version updated to 4.1.4
+  * Switch to debhelper level 10
+  * Removed the build dependency on autotools-dev
+  * Use salsa.debian.org Vcs-* URLs
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Fri, 11 May 2018 11:50:43 +0200
+
+jmagick (6.6.9~20130201-svn99-3) unstable; urgency=medium
+
+  * Team upload.
+  * Moved the package to Git
+  * Removed build-dependency on hardening-wrapper. (Closes: #836630)
+  * Standards-Version updated to 3.9.8
+
+ -- tony mancill <tmancill@debian.org>  Sun, 04 Sep 2016 21:13:53 -0700
+
+jmagick (6.6.9~20130201-svn99-2) unstable; urgency=medium
+
+  * Team upload
+  * Standards-Version updated to 3.9.5
+  * Use pkg-config for the imagemagick transition.
+    Thanks to Bastien Roucaries (Closes: #747856)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Mon, 12 May 2014 13:32:28 +0200
+
+jmagick (6.6.9~20130201-svn99-1) unstable; urgency=low
+
+  * Team upload.
+  * New upstream release (Closes: #714509)
+    - Refreshed the patch and added a description
+    - Fetch the upstream sources from SVN
+  * debian/control:
+    - Use canonical URLs for the Vcs-* fields
+    - Removed Michael Koch from the uploaders (Closes: #654036)
+    - Updated Standards-Version to 3.9.4 (no changes)
+    - Updated the URL of the homepage
+    - Build depend on debhelper >= 9
+  * debian/copyright: Refer to the GPL-2 in /usr/share/common-licenses
+  * Use XZ compression for the upstream tarball
+  * debian/rules:
+    - Install the upstream changelog
+    - Generate Java 6 compatible bytecode
+    - Include the debug information in the compiled classes
+    - Enabled hardening for libJMagick.so
+    - Install the Maven artifacts in /usr/share/maven-repo
+    - Added the get-orig-pom target to download the pom from Maven central
+  * Renamed debian/README.Debian-source to README.source
+  * Moved the examples to the documentation package
+  * Registered the documentation with doc-base
+  * debian/watch: Watch the branches in the SVN repository
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 07 Oct 2013 08:46:56 +0200
+
+jmagick (6.2.6-0-8) unstable; urgency=low
+
+  [ Niels Thykier ]
+  * Team upload.
+  * Reduced B-D on default-jdk-builddep to default-jdk.
+  * Removed unneeded dependency on JREs for a java library.
+  * Bumped Standards-Version to 3.9.1 - no changes required.
+
+  [ Kumar Appaiah ]
+  * Remove myself from Uploaders.
+
+  [ Vincent Fourmond ]
+  * Adapt build-depends to newer imagemagick (closes: #625595)
+  * Packages now also conforms to standards 3.9.2
+  * Remove articles at the beginning of the short description
+
+ -- Vincent Fourmond <fourmond@debian.org>  Mon, 06 Jun 2011 11:12:36 +0200
+
+jmagick (6.2.6-0-7) unstable; urgency=low
+
+  * Change maintainers into Maintainers.
+
+ -- Torsten Werner <twerner@debian.org>  Sun, 11 Apr 2010 21:46:53 +0200
+
+jmagick (6.2.6-0-6) unstable; urgency=low
+
+  * Bump Standards-Version to 3.8.4
+  * Depend on default-jre-headless | java2-runtime-headless (Closes: #573381)
+
+ -- Varun Hiremath <varun@debian.org>  Sat, 10 Apr 2010 17:29:09 -0400
+
+jmagick (6.2.6-0-5) unstable; urgency=low
+
+  [ Michael Koch ]
+  * Fixed watch file to point to correct download location
+    (Closes: #551207).
+  * Adjusted debian/orig-tar.sh for new upstream layout.
+  * Build-Depends on debhelper >= 7.
+  * Added myself to Uploaders.
+  * Updated Standards-Version to 3.8.3.
+
+  [ Varun Hiremath ]
+  * Switch to source format 3.0
+
+ -- Varun Hiremath <varun@debian.org>  Sun, 24 Jan 2010 17:45:10 -0500
+
+jmagick (6.2.6-0-4) unstable; urgency=medium
+
+  * debian/control:
+    + Use default-java-jdk in place of java-gcj-compat-dev.
+  * debian/rules:
+    + Switch JAVA_HOME location to /usr/lib/jvm/default-java.
+
+ -- Kumar Appaiah <akumar@debian.org>  Sun, 27 Apr 2008 17:53:03 +0530
+
+jmagick (6.2.6-0-2) unstable; urgency=medium
+
+  * debian/control:
+    + Add Vcs-Browser and Vcs-Svn fields.
+    + Use debian.org e-mail address for maintainers.
+    + Use quilt for patches.
+    + Standards Version is now 3.7.3 (no changes needed).
+  * debian/rules:
+    + Explicitly call gcc in order for the build system
+      to find the C compiler and build libJMagick.so.
+      (Closes: #477015)
+
+ -- Kumar Appaiah <akumar@debian.org>  Mon, 21 Apr 2008 06:46:12 +0530
+
+jmagick (6.2.6-0-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Now binNMU safe (Closes: #437486).
+    + The Debian Java maintainers adopt the package,
+      taken over from Adam Heath (Closes: #429794).
+    + Add Varun Hiremath and Kumar Appaiah as uploaders.
+    + Add Homepage field.
+    + Updated to use GCJ to build (Closes: #329104, #349564).
+    + Move jmagick6-docs to doc section.
+  * debian/rules:
+    + Fully refactor to make it use cdbs.
+  * debian/patches/01_fix_load_jnilib.patch
+    + Ensure that the JNI interface is loaded.
+  * debian/watch: Added.
+  * debian/orig-tar.sh, debian/orig-tar.exclude:
+    + Repackage scripts to remove unclean upstream tarball.
+  * debian/README.Debian-source:
+    + Explain why and how we are repackaging.
+  * debian/copyright: Total rewrite.
+  * debian/libjmagick6-java.examples:
+    + Provide two test cases as examples.
+  * debian/examples/Makefile:
+    + To build and run the examples.
+  * debian/README.Debian:
+    + Directions on how to run the examples.
+
+ -- Kumar Appaiah <akumar@ee.iitm.ac.in>  Tue, 16 Oct 2007 00:24:14 +0530
+
+jmagick (6.2.4-1-1) unstable; urgency=low
+
+  * New upstream version.
+  * Add kaffe-dev to Build-Depends.  Closes: #329104.
+  * No longer use find to clean the dirs.  Closes: #325411
+
+ -- Adam Heath <doogie@brainfood.com>  Sun, 15 Jan 2006 23:30:17 -0600
+
+jmagick (6.0.4-0-2) unstable; urgency=low
+
+  * Fix problem when JMagick is not loaded thru the system classloader.
+
+ -- Adam Heath <doogie@brainfood.com>  Wed, 17 Aug 2005 14:53:00 -0500
+
+jmagick (6.0.4-0-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Adam Heath <doogie@brainfood.com>  Wed, 17 Aug 2005 14:27:52 -0500
+

@@ -1,0 +1,9 @@
+JMagick for Debian
+==================
+
+The upstream provided test cases have been made available as examples
+in the `examples' directory. To run them, just copy all files to a
+directory called `test', edit the Makefile if needed, and run make
+test and make test2. Beware that test2 runs a while(true) loop.
+
+ -- Kumar Appaiah <akumar@ee.iitm.ac.in>, Sun, 14 Oct 2007 11:54:08 +0530

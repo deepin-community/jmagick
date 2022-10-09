@@ -1,0 +1,4 @@
+01_fix_load_jnilib.patch
+02_jmagick_implicit_decl.patch
+0001-Use-pkgconfig-for-flags.patch
+04_java10_compatibility.patch

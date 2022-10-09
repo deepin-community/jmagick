@@ -1,0 +1,73 @@
+Source: jmagick
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Varun Hiremath <varun@debian.org>
+Section: graphics
+Priority: optional
+Standards-Version: 4.1.4
+Build-Depends: cdbs,
+               chrpath,
+               debhelper (>= 10),
+               default-jdk,
+               libmagickcore-dev,
+               maven-repo-helper,
+	       autoconf
+Vcs-Git: https://salsa.debian.org/java-team/jmagick.git
+Vcs-Browser: https://salsa.debian.org/java-team/jmagick
+Homepage: http://sourceforge.net/projects/jmagick/
+
+Package: libjmagick6-java
+Architecture: all
+Section: java
+Depends: ${misc:Depends}, libjmagick6-jni (>= ${source:Version})
+Provides: jmagick
+Description: Java interface to ImageMagick
+ JMagick is an open source Java interface of ImageMagick.  It is
+ implemented in the form of Java Native Interface (JNI) into the
+ ImageMagick API.
+ .
+ JMagick does not attempt to make the ImageMagick API
+ object-oriented. It is merely a thin interface layer into the
+ ImageMagick API.
+ .
+ JMagick currently only implements a subset of ImageMagick APIs.
+ Should you require unimplemented features in JMagick, please join the
+ mailing list and make a request.
+
+Package: jmagick6-docs
+Section: doc
+Architecture: all
+Provides: jmagick-docs
+Depends: ${misc:Depends}
+Description: Java interface to ImageMagick (documentation)
+ JMagick is an open source Java interface of ImageMagick.  It is
+ implemented in the form of Java Native Interface (JNI) into the
+ ImageMagick API.
+ .
+ JMagick does not attempt to make the ImageMagick API
+ object-oriented. It is merely a thin interface layer into the
+ ImageMagick API.
+ .
+ JMagick currently only implements a subset of ImageMagick APIs.
+ Should you require unimplemented features in JMagick, please join the
+ mailing list and make a request.
+ .
+ This package contains javadoc generated documentation.
+
+Package: libjmagick6-jni
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Java interface to ImageMagick (native library)
+ JMagick is an open source Java interface of ImageMagick.  It is
+ implemented in the form of Java Native Interface (JNI) into the
+ ImageMagick API.
+ .
+ JMagick does not attempt to make the ImageMagick API
+ object-oriented. It is merely a thin interface layer into the
+ ImageMagick API.
+ .
+ JMagick currently only implements a subset of ImageMagick APIs.
+ Should you require unimplemented features in JMagick, please join the
+ mailing list and make a request.
+ .
+ This package contains the native interface to ImageMagick.  It is
+ loaded at runtime into the Java Virtual Machine (JVM).

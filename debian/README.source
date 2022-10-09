@@ -1,0 +1,19 @@
+JMagick for Debian
+==================
+
+The upstream supplied source package contains the remains of their
+builds. Therefore, to get a clean deb, I repackage the upstream
+tarball.
+
+Use the rules/get-orig-source target to create the orig.tar.xz.
+For more details on repackaging of upstream sources please see the
+debian/orig-tar.sh file.
+
+ -- Kumar Appaiah <akumar@ee.iitm.ac.in>, Sun, 14 Oct 2007 08:34:38 +0530
+
+
+Upstream hasn't published new releases for years but maintains branches
+in SVN compatible with more recent versions of ImageMagick. The code is
+thus fetched from SVN by debian/orig-tar.sh.
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 07 Oct 2013 08:46:56 +0200
